@@ -10,7 +10,6 @@ void main(List<String> args) {
 class MyApp extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return _MyAppState();
   }
 }
@@ -48,6 +47,13 @@ class _MyAppState extends State<MyApp> {
   var _questionIndex = 0;
   var _totalScore = 0;
 
+  void _resetQuiz() {
+    setState(() {
+      _questionIndex = 0;
+      _totalScore = 0;
+    });
+  }
+
   void _answerQuestion(int score) {
     _totalScore = _totalScore + score;
 
@@ -77,6 +83,7 @@ class _MyAppState extends State<MyApp> {
             )
           : Result(
               _totalScore,
+              _resetQuiz,
             ),
     ));
   }
